@@ -14,7 +14,7 @@ function TimelineSVG(props) {
       on
       customRange={[
         props.events[0].startTimeMillis,
-        props.events[0].startTimeMillis + props.timeElapsed + 10000,
+        props.events[0].startTimeMillis + props.timeElapsed + 100000,
       ]}
       //customRange={[props.now-10000, props.now+props.timeElapsed+10000]}
 

@@ -30,6 +30,7 @@ function Timeline() {
       label: "Participant 0",
     },
   ]);
+
   const [events, setEvents] = React.useState([
     {
       eventId: "start-1",
@@ -44,37 +45,37 @@ function Timeline() {
     const interval = setInterval(() => {
       setNow(Date.now());
       
-      console.log(events);
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
 
   // interval updating the 'events' array every second
   React.useEffect(() => {
-    const interval = setInterval(() => {
-      setEvents([
-        ...events,
-        {
-          eventId: "elapsed-2",
-          tooltip: "Elapsed 2",
-          laneId,
-          startTimeMillis: now,
-          endTimeMillis: (now + timeElapsed),
-        }
-        
-      ]);
-      console.log(events);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
+    console.log(timeElapsed)
+    if(recording === true) {
+        setEvents([
+            // ...events,
+            {
+            eventId: "elapsed-2",
+            tooltip: "Elapsed 2",
+            laneId,
+            startTimeMillis: now,
+            endTimeMillis: (now + (timeElapsed*1000)),
+            }
+            
+        ]);
+    }
+    
+  }, [timeElapsed, recording]);
+  console.log(timeElapsed)
+  console.log(events)
   // ------------------------------------------TIME UPDATE---
 
   //----------------------------------------------DATA
 
   // function to handle adding a participant (NOT YET FUNCTIONING)
   function addParticipantHandler() {
-    console.log("hi");
     setEvents([
       // {
       //   eventId: "event-1",

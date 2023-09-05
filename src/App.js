@@ -2,11 +2,10 @@ import './App.css';
 import './App.sass';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-//import { Timeline } from 'react-svg-timeline';
-import TimelineSVG from './components/TimelineSVG'
-import TimelineProt from './components/TimelineProt';
 import Timeline from './components/Timeline';
 import dataset from './data/dataset.json';
+
+import {useState} from 'react'
 
 // Bootstrap 
 import Container from 'react-bootstrap/Container';
@@ -18,23 +17,20 @@ import VisTimeline from './components/VisTimeline';
 
 
 function App() {
+  const [timelines, setTimelines] = useState([<Timeline/>]);
+
+  function addTimeline() {
+    setTimelines([...timelines, <Timeline/>])
+  }
+
   return (
     <div className="App">
       <Container>
         <Row>
-          {/* <Col>
-            <Button variant="light" onClick={}>PLAY</Button>{' '}
-            <Button variant="light">PAUSE</Button>{' '}
-          </Col>
           <Col>
-            <TimelineSVG /> */}
-            {/* <TimelineProt></TimelineProt> */}
-          {/* </Col> */}
-          <Col>
-            <Timeline></Timeline>
-            
+            {/* {timelines.map((item, i) => ( return{input})} */}
+            <Timeline addTimeline={addTimeline}/>
           </Col>
-          
         </Row>
       </Container>
     </div>
